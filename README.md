@@ -13,7 +13,7 @@ HD.jpg
 
 ## Try
 ```
-python3 finder.py /path/to/image.jpg
+python3 finder.py /path/to/image
 ```
 ### exmaple
 ```
