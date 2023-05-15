@@ -10,8 +10,17 @@ HD.jpg
 
 <br/>
 <br/>  
-    
-      
+
+## Try
+```
+python3 finder.py /path/to/image.jpg
+```
+### exmaple
+```
+python3 finder.py /home/.../HD.jpg
+```
+<br/>
+<br/>
  
 ## Result
 ```
