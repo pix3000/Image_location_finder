@@ -1,5 +1,6 @@
 import exifread
 from geopy.geocoders import Nominatim
+import argparse
 
 def get_decimal_from_dms(dms, ref):
     degrees = dms[0]
@@ -27,26 +28,35 @@ def get_gps_coordinates(image_path):
     else:
         return None
 
-
 def get_location_name(latitude, longitude):
-    geolocator = Nominatim(user_agent="my_app")  # 사용자 에이전트 이름 설정
+    geolocator = Nominatim(user_agent="my_app")  # Set your own user agent name
     location = geolocator.reverse((latitude, longitude), exactly_one=True)
     if location is None:
         return "지역을 찾을 수 없습니다."
     else:
         return location.address
 
+# Create an argument parser
+parser = argparse.ArgumentParser(description='Retrieve GPS coordinates and location information from an image.')
 
+# Add an argument for the image path
+parser.add_argument('image_path', type=str, help='path to the image file')
 
-# 이미지 파일 경로
-image_path = '/.../HD.jpg'
+# Parse the arguments
+args = parser.parse_args()
+
+# Get the image path from the arguments
+image_path = args.image_path
 
 image_name = image_path.split("/")[-1]
 image_name = image_name.split(".")[0]
 
-
-# 경도, 위도 값 출력
+# Get the GPS coordinates
 coordinates = get_gps_coordinates(image_path)
+if coordinates is None:
+    print("No GPS coordinates found in the image.")
+    exit()
+
 latitude, longitude = coordinates
 
 latitude = f'{latitude:.6f}'
@@ -55,13 +65,13 @@ longitude = f'{longitude:.6f}'
 print(f"latitude: {latitude}")
 print(f"longitude: {longitude}")
 
-#위치 출력
+# Get the location name
 location_name = get_location_name(latitude, longitude)
 print(f"location: {location_name}") 
 
 txt_name = image_name + ".txt"
 
-#txt 파일로 저장
-File =  open(f"location_save/{txt_name}", "w")
-print(f"{image_path}: {location_name}", file=File)
-File.close
+# Save the location to a text file
+file = open(f"location_save/{txt_name}", "w")
+print(f"{image_path}: {location_name}", file=file)
+file.close()
