@@ -1,6 +1,7 @@
 import exifread
 from geopy.geocoders import Nominatim
 import argparse
+import cv2
 
 def get_decimal_from_dms(dms, ref):
     degrees = dms[0]
@@ -70,6 +71,9 @@ location_name = get_location_name(latitude, longitude)
 print(f"location: {location_name}") 
 
 txt_name = image_name + ".txt"
+
+save_img = cv2.imread(image_path)
+cv2.imwrite(f"location_save/{image_name}.jpg", save_img)
 
 # Save the location to a text file
 file = open(f"location_save/{txt_name}", "w")
