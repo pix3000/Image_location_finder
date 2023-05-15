@@ -1,6 +1,7 @@
 # Image_location_finder
 
 >**Python code that reads the hardness and latitude values in the image information, prints out the location information that is easy for humans to recognize, and saves it as a txt file**
+<br/>
 
 ## Test Image
 
