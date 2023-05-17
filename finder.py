@@ -77,5 +77,5 @@ cv2.imwrite(f"location_save/{image_name}.jpg", save_img)
 
 # Save the location to a text file
 file = open(f"location_save/{txt_name}", "w")
-print(f"{image_path}: {location_name}", file=file)
+print(f"{image_name}: {location_name}", file=file)
 file.close()
