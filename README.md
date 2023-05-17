@@ -27,6 +27,6 @@ python3 finder.py /home/.../HD.jpg
  
 ## Result
 ```
-HD.jpg: AK&홍대, 신촌로2길, 동교동, 서교동, 마포구, 서울, 04056, 대한민국
+HD: AK&홍대, 신촌로2길, 동교동, 서교동, 마포구, 서울, 04056, 대한민국
 ```
 location_save/HD.txt
